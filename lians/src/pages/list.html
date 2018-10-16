@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .wrap {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            width: 100%;
+            height: 44px;
+            background: #000;
+            display: flex;
+            padding: 0 10px;
+            box-sizing: border-box;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        
+        input {
+            width: 100%;
+            height: 30px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <span>返回</span>
+            <h3>发布帖子</h3>
+            <span id="btns">发帖</span>
+        </header>
+        <input type="text" placeholder="标题(60字已内)" id="ip1">
+        <textarea id="tet"></textarea>
+    </div>
+    <script src="../js/libs/jquery.min.js"></script>
+    <script>
+        // 点击
+        $("#btns").on("click", function() {
+            var ip1 = $("#ip1").val().trim();
+            var tet = $("#tet").val().trim();
+            if (ip1 && tet) {
+                $.ajax({
+                    url: "/api/list",
+                    dataType: "json",
+                    type: "post",
+                    data: {
+                        title: ip1,
+                        content: tet
+                    },
+                    success: function(res) {
+                        if (res.code == "1") {
+                            alert(res.data);
+                            location.href = "../index.html";
+                        }
+                    }
+                })
+            } else {
+                alert("填写的信息不够完善");
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <span></span>
+            <span id="btn">编辑</span>
+        </header>
+        <main>
+            <div class="top">
+                <!-- <dl>
+                    <dt><b>标题:</b>sa</dt>
+                    <dd><b>内容:</b>sa</dd>
+                </dl> -->
+            </div>
+        </main>
+        <script type="text/x-handlebars-template" id="hp">
+            {{#each this}}
+            <dl>
+                <dt><b>标题:</b>{{title}}</dt>
+                <dd><b>内容:</b>{{content}}</dd>
+            </dl>
+            {{/each}}
+        </script>
+        <footer>
+            <ol>
+                <li>社区</li>
+                <li>聊天室</li>
+                <li>消息</li>
+                <li>我的</li>
+            </ol>
+        </footer>
+    </div>
+    <script src="js/libs/require.js"></script>
+    <script>
+        require(["./js/main.js"], function() {
+            require(["index"])
+        })
+    </script>
+</body>
+
+</html>
